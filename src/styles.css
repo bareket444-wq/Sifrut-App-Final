@@ -1,0 +1,1178 @@
+/* =========================================
+   1. הגדרות בסיס וגופנים
+   ========================================= */
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700&display=swap");
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Rubik", sans-serif;
+  background-color: #f5f7fa;
+  direction: rtl; /* כיוון טקסט לעברית */
+  color: #2d3436;
+}
+
+.app-container {
+  max-width: 480px;
+  margin: 0 auto;
+  min-height: 100vh;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  background: #fdfbfb;
+}
+
+/* הרקע החדש והצבעוני למסך הבית! */
+.dynamic-bg {
+  background: linear-gradient(-45deg, #fdfbfb, #e0c3fc, #e0f2fe, #fbc2eb);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+}
+
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* =========================================
+      2. מסך התחברות (Login)
+      ========================================= */
+.login-screen {
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  padding: 20px;
+}
+
+.login-card {
+  background: white;
+  padding: 40px 30px;
+  border-radius: 30px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 100%;
+  max-width: 320px;
+  animation: popUp 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.login-icon {
+  font-size: 4rem;
+  margin-bottom: 15px;
+  animation: floatUp 3s ease-in-out infinite alternate;
+}
+.login-card h1 {
+  margin: 0;
+  color: #2d3436;
+  font-size: 1.8rem;
+}
+.login-card p {
+  color: #636e72;
+  margin-bottom: 30px;
+  font-size: 1rem;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.login-input {
+  width: 100%;
+  padding: 15px;
+  border-radius: 15px;
+  border: 1px solid #dfe4ea;
+  font-family: "Rubik", sans-serif;
+  font-size: 1rem;
+  box-sizing: border-box;
+  text-align: right;
+  background: #fdfbfb;
+  transition: all 0.3s ease;
+}
+.login-input:focus {
+  outline: none;
+  border-color: #6e8efb;
+  background: white;
+  box-shadow: 0 0 0 4px rgba(110, 142, 251, 0.15);
+}
+
+.login-btn {
+  background: linear-gradient(135deg, #6e8efb, #a777e3);
+  color: white;
+  border: none;
+  padding: 15px;
+  border-radius: 15px;
+  font-family: "Rubik", sans-serif;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+  box-shadow: 0 8px 20px rgba(110, 142, 251, 0.3);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.login-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px rgba(110, 142, 251, 0.4);
+}
+
+.toggle-auth {
+  margin-top: 20px;
+  font-size: 0.9rem;
+  color: #636e72;
+}
+.toggle-auth span {
+  color: #6e8efb;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: underline;
+  transition: color 0.3s;
+}
+.toggle-auth span:hover {
+  color: #a777e3;
+}
+
+/* =========================================
+      3. הדר (Header) ומד כוכבים
+      ========================================= */
+.header {
+  background: linear-gradient(135deg, #6e8efb, #a777e3);
+  padding: 40px 20px 25px 20px;
+  color: white;
+  border-bottom-left-radius: 35px;
+  border-bottom-right-radius: 35px;
+  position: relative;
+  box-shadow: 0 10px 25px rgba(110, 142, 251, 0.2);
+}
+
+.inner-header {
+  padding: 20px;
+  text-align: center;
+  border-radius: 0 0 25px 25px;
+  box-shadow: none;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 1.6rem;
+  line-height: 1.3;
+}
+.header p {
+  margin: 10px 0 0 0;
+  opacity: 0.9;
+}
+
+.logout-btn {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  padding: 6px 14px;
+  border-radius: 12px;
+  font-family: "Rubik", sans-serif;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.logout-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.back-btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 15px;
+  font-family: "Rubik", sans-serif;
+  cursor: pointer;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  transition: background 0.3s;
+}
+.back-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* מד התקדמות (Gamification) */
+.progress-container {
+  background: rgba(255, 255, 255, 0.25);
+  padding: 12px 18px;
+  border-radius: 20px;
+  margin-top: 20px;
+  text-align: right;
+  backdrop-filter: blur(5px);
+}
+.progress-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+.progress-bar-bg {
+  background: rgba(0, 0, 0, 0.2);
+  height: 10px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.progress-bar-fill {
+  background: linear-gradient(90deg, #f6d365 0%, #ffb347 100%);
+  height: 100%;
+  border-radius: 5px;
+  transition: width 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* =========================================
+      4. מסך הבית - המעגלים (כדורים נושמים מושלמים!)
+      ========================================= */
+.circles-container {
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+  margin-top: 25px;
+  padding-bottom: 40px;
+  align-items: center;
+}
+
+.circle-card {
+  width: 260px;
+  height: 260px;
+  background: white;
+  border-radius: 50%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+
+  cursor: pointer;
+  position: relative;
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  border: 4px solid transparent;
+}
+
+.unlocked {
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  border-color: rgba(161, 140, 209, 0.4);
+  animation: breathing 3.5s infinite alternate ease-in-out;
+}
+.unlocked h2 {
+  color: #764ba2;
+  font-size: 1.8rem;
+  margin: 0 0 8px 0;
+}
+.unlocked p {
+  color: #636e72;
+  margin: 0;
+  font-size: 1rem;
+}
+.unlocked:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 20px 40px rgba(161, 140, 209, 0.3);
+}
+
+.locked {
+  background: #f1f2f6;
+  color: #a4b0be;
+  border-color: #dfe4ea;
+  opacity: 0.8;
+}
+.locked h2 {
+  margin: 10px 0 0 0;
+  font-size: 1.5rem;
+}
+.locked:hover {
+  transform: translateX(6px);
+}
+
+.social-circle {
+  background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+  border-color: rgba(255, 255, 255, 0.5);
+  color: white;
+  animation: breathingSocial 3.5s infinite alternate ease-in-out;
+}
+.social-circle h2 {
+  color: white;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+.social-circle p {
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: 500;
+}
+.social-circle:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 20px 40px rgba(56, 249, 215, 0.4);
+}
+
+.national-circle {
+  background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);
+  border-color: rgba(255, 255, 255, 0.5);
+  color: white;
+  animation: breathingNational 3.5s infinite alternate ease-in-out;
+}
+.national-circle h2 {
+  color: white;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+.national-circle p {
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: 500;
+}
+.national-circle:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 20px 40px rgba(102, 166, 255, 0.4);
+}
+
+@keyframes breathing {
+  0% {
+    box-shadow: 0 5px 15px rgba(161, 140, 209, 0.15);
+    transform: translateY(0);
+  }
+  100% {
+    box-shadow: 0 15px 35px rgba(161, 140, 209, 0.3);
+    transform: translateY(-5px);
+  }
+}
+@keyframes breathingSocial {
+  0% {
+    box-shadow: 0 5px 15px rgba(56, 249, 215, 0.2);
+    transform: translateY(0);
+  }
+  100% {
+    box-shadow: 0 15px 35px rgba(56, 249, 215, 0.5);
+    transform: translateY(-5px);
+  }
+}
+@keyframes breathingNational {
+  0% {
+    box-shadow: 0 5px 15px rgba(102, 166, 255, 0.2);
+    transform: translateY(0);
+  }
+  100% {
+    box-shadow: 0 15px 35px rgba(102, 166, 255, 0.5);
+    transform: translateY(-5px);
+  }
+}
+
+/* =========================================
+      5. ארגז הכלים (באנרים וכרטיסיות)
+      ========================================= */
+.toolbox-header {
+  background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+}
+
+.top-toolbox {
+  margin: -20px 20px 15px 20px;
+  background: white;
+  padding: 18px;
+  border-radius: 20px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  z-index: 10;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+.top-toolbox:hover {
+  transform: translateY(-3px);
+}
+
+.toolbox-icon {
+  font-size: 2.2rem;
+  margin-left: 15px;
+}
+.toolbox-text h2 {
+  margin: 0;
+  font-size: 1.15rem;
+  color: #2d3436;
+}
+.toolbox-text p {
+  margin: 4px 0 0 0;
+  font-size: 0.9rem;
+  color: #636e72;
+}
+
+.quiz-banner,
+.flashcard-banner {
+  margin: 0 20px 15px 20px;
+  padding: 18px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.quiz-banner {
+  background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+  box-shadow: 0 10px 25px rgba(253, 160, 133, 0.3);
+  margin-top: 20px;
+}
+.flashcard-banner {
+  background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);
+  box-shadow: 0 10px 25px rgba(161, 140, 209, 0.3);
+}
+.quiz-banner:hover,
+.flashcard-banner:hover {
+  transform: translateY(-4px);
+}
+.quiz-banner-icon {
+  font-size: 2.5rem;
+  margin-left: 18px;
+}
+.quiz-banner h3,
+.quiz-banner p,
+.flashcard-banner h3,
+.flashcard-banner p {
+  margin: 0;
+  color: #2d3436;
+}
+.quiz-banner p,
+.flashcard-banner p {
+  opacity: 0.85;
+  margin-top: 3px;
+}
+
+.tools-container {
+  padding: 0 20px 30px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.tool-card {
+  background: white;
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.04);
+  border-right: 6px solid #6e8efb;
+}
+.tool-card h3 {
+  margin: 0 0 15px 0;
+  color: #2d3436;
+  font-size: 1.3rem;
+}
+.features-list {
+  margin: 0;
+  padding-right: 20px;
+  color: #636e72;
+  line-height: 1.8;
+}
+.features-list li {
+  margin-bottom: 8px;
+}
+
+/* =========================================
+      6. כרטיסיות זיכרון (Flashcards Arena)
+      ========================================= */
+.flashcard-header {
+  background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);
+}
+
+.flashcard-container {
+  flex: 1;
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.flashcard {
+  width: 100%;
+  max-width: 320px;
+  height: 240px;
+  perspective: 1200px;
+  cursor: pointer;
+  margin-bottom: 40px;
+}
+.flashcard-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
+  transform-style: preserve-3d;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  border-radius: 25px;
+}
+.flashcard.flipped .flashcard-inner {
+  transform: rotateY(180deg);
+}
+
+.flashcard-front,
+.flashcard-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 25px;
+  box-sizing: border-box;
+}
+.flashcard-front {
+  background: white;
+  color: #2d3436;
+  border: 3px solid #a18cd1;
+}
+.flashcard-front h2 {
+  font-size: 2rem;
+  margin: 0 0 15px 0;
+  color: #764ba2;
+}
+.flashcard-back {
+  background: linear-gradient(135deg, #6e8efb, #a777e3);
+  color: white;
+  transform: rotateY(180deg);
+}
+.flashcard-back p {
+  font-size: 1.15rem;
+  line-height: 1.6;
+  margin: 0 0 20px 0;
+}
+
+.flip-hint {
+  font-size: 0.85rem;
+  opacity: 0.8;
+  background: rgba(0, 0, 0, 0.05);
+  padding: 5px 12px;
+  border-radius: 12px;
+}
+.flashcard-back .flip-hint {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.next-card-btn {
+  background: #2d3436;
+  color: white;
+  border: none;
+  padding: 15px 35px;
+  border-radius: 25px;
+  font-family: "Rubik", sans-serif;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 8px 20px rgba(45, 52, 54, 0.2);
+}
+.next-card-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 25px rgba(45, 52, 54, 0.3);
+}
+
+/* =========================================
+      7. מסך חידון
+      ========================================= */
+.quiz-header {
+  background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+}
+.quiz-container {
+  padding: 25px 20px;
+}
+.question-box {
+  background: white;
+  padding: 25px;
+  border-radius: 20px;
+  text-align: center;
+  margin-bottom: 25px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+}
+.question-box h2 {
+  margin: 0;
+  font-size: 1.3rem;
+  color: #2d3436;
+  line-height: 1.4;
+}
+.options-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.option-btn {
+  background: white;
+  border: 2px solid #dfe4ea;
+  padding: 18px;
+  border-radius: 15px;
+  font-family: "Rubik", sans-serif;
+  font-size: 1.05rem;
+  cursor: pointer;
+  text-align: right;
+  transition: all 0.2s;
+}
+.option-btn:hover:not(.disabled) {
+  border-color: #f6d365;
+  background: #fffcf5;
+  transform: translateX(-3px);
+}
+.option-btn.correct {
+  background: #d4edda;
+  border-color: #c3e6cb;
+  color: #155724;
+}
+.option-btn.wrong {
+  background: #f8d7da;
+  border-color: #f5c6cb;
+  color: #721c24;
+}
+.option-btn.disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.feedback-box {
+  margin-top: 25px;
+  padding: 20px;
+  border-radius: 15px;
+  text-align: center;
+  animation: fadeInOpacity 0.4s;
+  font-size: 1.1rem;
+}
+.feedback-correct {
+  background: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+.feedback-wrong {
+  background: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+.next-btn {
+  margin-top: 15px;
+  background: #2d3436;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 15px;
+  cursor: pointer;
+  font-family: "Rubik", sans-serif;
+  font-size: 1rem;
+  transition: transform 0.2s;
+}
+.next-btn:hover {
+  transform: scale(1.05);
+}
+
+/* =========================================
+      8. מסכי מעגלים ויצירות (רשימות)
+      ========================================= */
+.works-container {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.work-card {
+  background: white;
+  border-radius: 20px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  border: 1px solid #f1f2f6;
+  transition: transform 0.3s;
+}
+.work-card:hover {
+  transform: translateY(-3px);
+}
+
+.work-icon {
+  font-size: 2.2rem;
+  margin-left: 18px;
+}
+.work-info {
+  flex: 1;
+}
+.work-info h3 {
+  margin: 0 0 6px 0;
+  color: #2d3436;
+  font-size: 1.2rem;
+}
+.work-info p {
+  margin: 0;
+  color: #636e72;
+  font-size: 0.95rem;
+}
+.enter-btn {
+  background: #6e8efb;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-family: "Rubik", sans-serif;
+  font-weight: 500;
+  transition: opacity 0.3s;
+}
+.enter-btn:hover {
+  opacity: 0.8;
+}
+
+.work-header {
+  background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);
+}
+
+.tabs-container {
+  display: flex;
+  background: white;
+  padding: 0 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.tab-btn {
+  flex: 1;
+  background: none;
+  border: none;
+  padding: 18px 5px;
+  font-family: "Rubik", sans-serif;
+  font-size: 1rem;
+  color: #a4b0be;
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  transition: all 0.3s;
+}
+.tab-btn.active {
+  color: #764ba2;
+  font-weight: bold;
+  border-bottom: 3px solid #764ba2;
+}
+
+.tab-content {
+  padding: 25px 20px;
+  flex: 1;
+  overflow-y: auto;
+}
+.content-card {
+  background: white;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.04);
+  border: 1px solid #f1f2f6;
+}
+.center-card {
+  text-align: center;
+}
+.content-card h3 {
+  margin: 0 0 15px 0;
+  color: #2d3436;
+  font-size: 1.3rem;
+}
+.content-card p {
+  color: #636e72;
+  line-height: 1.7;
+  margin-top: 0;
+  font-size: 1.05rem;
+}
+.presentation-icon {
+  font-size: 4.5rem;
+  margin-bottom: 15px;
+}
+
+.action-btn {
+  background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 25px;
+  font-family: "Rubik", sans-serif;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 8px 20px rgba(161, 140, 209, 0.3);
+}
+.action-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px rgba(161, 140, 209, 0.4);
+}
+
+.question-item {
+  margin-bottom: 30px;
+}
+.question-item p {
+  color: #2d3436;
+  font-weight: 500;
+  margin-bottom: 12px;
+  font-size: 1.1rem;
+}
+.answer-input {
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 100px;
+  padding: 15px;
+  border-radius: 15px;
+  border: 2px solid #dfe4ea;
+  font-family: "Rubik", sans-serif;
+  font-size: 1rem;
+  resize: vertical;
+  direction: rtl;
+  transition: border-color 0.3s;
+}
+.answer-input:focus {
+  outline: none;
+  border-color: #a18cd1;
+}
+
+/* =========================================
+      9. מעבדת AI - זהות חברתית
+      ========================================= */
+.social-header {
+  background: linear-gradient(to right, #43e97b 0%, #38f9d7 100%);
+}
+.ai-card {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+}
+.ai-enter-btn {
+  background: white;
+  color: #764ba2;
+}
+.ai-enter-btn:hover {
+  opacity: 0.9;
+}
+
+.ai-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+.ai-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding-bottom: 20px;
+}
+.active-ai-tab {
+  color: #764ba2 !important;
+  font-weight: bold;
+  border-bottom: 3px solid #764ba2 !important;
+}
+
+/* AI Chat */
+.chat-window {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background: #f8f9fa;
+}
+.chat-bubble {
+  max-width: 80%;
+  padding: 15px 20px;
+  border-radius: 20px;
+  font-size: 1rem;
+  line-height: 1.5;
+  animation: fadeInOpacity 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+.bubble-ai {
+  background: white;
+  color: #2d3436;
+  align-self: flex-start;
+  border-top-right-radius: 5px;
+  border: 1px solid #dfe4ea;
+}
+.bubble-user {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  align-self: flex-end;
+  border-top-left-radius: 5px;
+}
+
+.typing-indicator {
+  display: flex;
+  gap: 4px;
+  padding: 15px 25px;
+  width: max-content;
+}
+.typing-indicator span {
+  width: 7px;
+  height: 7px;
+  background: #a4b0be;
+  border-radius: 50%;
+  animation: typing 1.2s infinite;
+}
+.typing-indicator span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.typing-indicator span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+@keyframes typing {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.chat-input-area {
+  display: flex;
+  padding: 15px 20px;
+  background: white;
+  border-top: 1px solid #dfe4ea;
+  gap: 12px;
+}
+.chat-input {
+  flex: 1;
+  padding: 14px 20px;
+  border-radius: 25px;
+  border: 1px solid #dfe4ea;
+  font-family: "Rubik", sans-serif;
+  font-size: 1rem;
+  background: #fdfbfb;
+  transition: border-color 0.3s;
+}
+.chat-input:focus {
+  outline: none;
+  border-color: #764ba2;
+}
+.chat-send-btn {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 0 25px;
+  border-radius: 25px;
+  font-family: "Rubik", sans-serif;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.chat-send-btn:hover {
+  transform: scale(1.05);
+}
+
+/* AI Studio (אמנות) */
+.studio-window {
+  flex: 1;
+  padding: 20px;
+  background: #f8f9fa;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+.studio-instructions {
+  background: white;
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+  margin-bottom: 25px;
+  text-align: center;
+}
+.studio-instructions h3 {
+  margin: 0 0 10px 0;
+  color: #764ba2;
+  font-size: 1.3rem;
+}
+.art-prompt-input {
+  width: 100%;
+  min-height: 120px;
+  padding: 18px;
+  border-radius: 20px;
+  border: 2px solid #dfe4ea;
+  font-family: "Rubik", sans-serif;
+  font-size: 1.05rem;
+  resize: none;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  transition: border-color 0.3s;
+}
+.art-prompt-input:focus {
+  outline: none;
+  border-color: #667eea;
+}
+.generate-art-btn {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 18px;
+  border-radius: 25px;
+  font-family: "Rubik", sans-serif;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(118, 75, 162, 0.4);
+  transition: all 0.3s;
+}
+.generate-art-btn:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px rgba(118, 75, 162, 0.5);
+}
+.generate-art-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.generating-loader {
+  text-align: center;
+  margin-top: 40px;
+  color: #764ba2;
+  font-weight: bold;
+}
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(118, 75, 162, 0.2);
+  border-top: 5px solid #764ba2;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 15px auto;
+}
+
+.generated-art-result {
+  margin-top: 30px;
+  background: white;
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+.art-image {
+  width: 100%;
+  border-radius: 15px;
+  margin: 20px 0;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+.download-btn {
+  background: #f1f2f6;
+  color: #2d3436;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 20px;
+  font-family: "Rubik", sans-serif;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: background 0.3s;
+}
+.download-btn:hover {
+  background: #dfe4ea;
+}
+
+/* =========================================
+      10. אנימציות כלליות, פופאפים וחגיגות
+      ========================================= */
+.fade-in {
+  animation: fadeInOpacity 0.4s ease;
+}
+@keyframes fadeInOpacity {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes popUp {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.popup-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  animation: fadeInOpacity 0.2s;
+}
+.popup-content {
+  background: white;
+  padding: 35px 30px;
+  border-radius: 25px;
+  text-align: center;
+  width: 85%;
+  max-width: 320px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+}
+.popup-content h3 {
+  margin: 0 0 15px 0;
+  color: #2d3436;
+  font-size: 1.4rem;
+}
+.close-btn {
+  margin-top: 20px;
+  background: #6e8efb;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 18px;
+  font-family: "Rubik", sans-serif;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.close-btn:hover {
+  transform: scale(1.05);
+}
+
+.celebration-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(5px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeInOpacity 0.3s ease;
+}
+.celebration-content {
+  text-align: center;
+  animation: popUp 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.celebration-content h1 {
+  color: #a18cd1;
+  font-size: 2.8rem;
+  margin: 0 0 15px 0;
+}
+.celebration-content p {
+  color: #2d3436;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+.floating-emojis {
+  font-size: 3.5rem;
+  margin-top: 25px;
+  letter-spacing: 15px;
+  animation: floatUp 2s ease-in-out infinite alternate;
+}
